@@ -1,26 +1,24 @@
 package com.example.demo.entity;
 
-import java.util.Arrays;
-
-public class CommDisaster {
+public class CivilStructure {
     private String id;
     private String date;
     private String location;
-    private String type;
-    private String grade;
-    private byte[] picture;
+    private String basicallyIntactSquare;
+    private String damagedSquare;
+    private String destroyedSquare;
     private String note;
     private String reportingUnit;
 
     @Override
     public String toString() {
-        return "CommDisaster{" +
+        return "CivilStructure{" +
                 "id='" + id + '\'' +
                 ", date='" + date + '\'' +
                 ", location='" + location + '\'' +
-                ", type='" + type + '\'' +
-                ", grade='" + grade + '\'' +
-                ", picture=" + Arrays.toString(picture) +
+                ", basicallyIntactSquare='" + basicallyIntactSquare + '\'' +
+                ", damagedSquare='" + damagedSquare + '\'' +
+                ", destroyedSquare='" + destroyedSquare + '\'' +
                 ", note='" + note + '\'' +
                 ", reportingUnit='" + reportingUnit + '\'' +
                 '}';
@@ -50,28 +48,28 @@ public class CommDisaster {
         this.location = location;
     }
 
-    public String getType() {
-        return type;
+    public String getBasicallyIntactSquare() {
+        return basicallyIntactSquare;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setBasicallyIntactSquare(String basicallyIntactSquare) {
+        this.basicallyIntactSquare = basicallyIntactSquare;
     }
 
-    public String getGrade() {
-        return grade;
+    public String getDamagedSquare() {
+        return damagedSquare;
     }
 
-    public void setGrade(String grade) {
-        this.grade = grade;
+    public void setDamagedSquare(String damagedSquare) {
+        this.damagedSquare = damagedSquare;
     }
 
-    public byte[] getPicture() {
-        return picture;
+    public String getDestroyedSquare() {
+        return destroyedSquare;
     }
 
-    public void setPicture(byte[] picture) {
-        this.picture = picture;
+    public void setDestroyedSquare(String destroyedSquare) {
+        this.destroyedSquare = destroyedSquare;
     }
 
     public String getNote() {

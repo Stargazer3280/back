@@ -10,8 +10,8 @@ import java.util.List;
 @Mapper
 public interface CommDisasterDao {
     @Select("select * from comm_disaster")
-    public List<CommDisaster> getAll();
+    List<CommDisaster> getAll();
 
     @Insert("insert into comm_disaster(id,date,location,type,grade,picture,note,reporting_unit) values(#{id},#{date},#{location},#{type},#{grade},#{picture},#{note},#{reportingUnit})")
-    public void insert(CommDisaster commDisaster);
+    void insert(CommDisaster commDisaster);
 }

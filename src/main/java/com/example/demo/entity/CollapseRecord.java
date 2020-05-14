@@ -2,26 +2,26 @@ package com.example.demo.entity;
 
 import java.util.Arrays;
 
-public class CommDisaster {
+public class CollapseRecord {
     private String id;
-    private String date;
     private String location;
+    private String date;
     private String type;
-    private String grade;
-    private byte[] picture;
+    private String status;
     private String note;
+    private byte[] picture;
     private String reportingUnit;
 
     @Override
     public String toString() {
-        return "CommDisaster{" +
+        return "CollapseRecord{" +
                 "id='" + id + '\'' +
-                ", date='" + date + '\'' +
                 ", location='" + location + '\'' +
+                ", date='" + date + '\'' +
                 ", type='" + type + '\'' +
-                ", grade='" + grade + '\'' +
-                ", picture=" + Arrays.toString(picture) +
+                ", status='" + status + '\'' +
                 ", note='" + note + '\'' +
+                ", picture=" + Arrays.toString(picture) +
                 ", reportingUnit='" + reportingUnit + '\'' +
                 '}';
     }
@@ -34,20 +34,20 @@ public class CommDisaster {
         this.id = id;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
     public String getLocation() {
         return location;
     }
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getType() {
@@ -58,20 +58,12 @@ public class CommDisaster {
         this.type = type;
     }
 
-    public String getGrade() {
-        return grade;
+    public String getStatus() {
+        return status;
     }
 
-    public void setGrade(String grade) {
-        this.grade = grade;
-    }
-
-    public byte[] getPicture() {
-        return picture;
-    }
-
-    public void setPicture(byte[] picture) {
-        this.picture = picture;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getNote() {
@@ -80,6 +72,14 @@ public class CommDisaster {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public byte[] getPicture() {
+        return picture;
+    }
+
+    public void setPicture(byte[] picture) {
+        this.picture = picture;
     }
 
     public String getReportingUnit() {
