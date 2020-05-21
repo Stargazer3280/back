@@ -30,6 +30,8 @@ public class JsonReadingService {
     private CollapseRecordDao collapseRecordDao;
     @Autowired
     private DisasterPredictionDao disasterPredictionDao;
+    @Autowired
+    private StatusService statusService;
 
     public void JSONDealer(MultipartFile file, String MSCode) throws IOException {
         String jsonString = getStreamToStr(file.getInputStream());
@@ -40,26 +42,31 @@ public class JsonReadingService {
                     DeathStatistics deathStatistics = JSON.parseObject(new JSONObject(json).toString(), DeathStatistics.class);
                     deathStatistics.setReportingUnit(MSCode + deathStatistics.getReportingUnit());
                     deathStatisticsDao.insert(deathStatistics);
+                    statusService.updateStatus("deathStatistics", 0);
                     break;
                 case "221"://土木CivilStructure
                     CivilStructure civilStructure = JSON.parseObject(new JSONObject(json).toString(), CivilStructure.class);
                     civilStructure.setReportingUnit(MSCode + civilStructure.getReportingUnit());
                     civilStructureDao.insert(civilStructure);
+                    statusService.updateStatus("civilStructure", 0);
                     break;
                 case "336"://通信CommDisaster
                     CommDisaster commDisaster = JSON.parseObject(new JSONObject(json).toString(), CommDisaster.class);
                     commDisaster.setReportingUnit(MSCode + commDisaster.getReportingUnit());
                     commDisasterDao.insert(commDisaster);
+                    statusService.updateStatus("commDisaster", 0);
                     break;
                 case "441"://崩塌CollapseRecord
                     CollapseRecord collapseRecord = JSON.parseObject(new JSONObject(json).toString(), CollapseRecord.class);
                     collapseRecord.setReportingUnit(MSCode + collapseRecord.getReportingUnit());
                     collapseRecordDao.insert(collapseRecord);
+                    statusService.updateStatus("collapseRecord", 0);
                     break;
                 case "552"://灾情预测DisasterPrediction
                     DisasterPrediction disasterPrediction = JSON.parseObject(new JSONObject(json).toString(), DisasterPrediction.class);
                     disasterPrediction.setReportingUnit(MSCode + disasterPrediction.getReportingUnit());
                     disasterPredictionDao.insert(disasterPrediction);
+                    statusService.updateStatus("disasterPrediction", 0);
                     break;
             }
         }

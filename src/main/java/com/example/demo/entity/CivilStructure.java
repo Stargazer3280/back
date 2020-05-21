@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 public class CivilStructure {
+    private Integer no;
     private String id;
     private String date;
     private String location;
@@ -22,6 +23,14 @@ public class CivilStructure {
                 ", note='" + note + '\'' +
                 ", reportingUnit='" + reportingUnit + '\'' +
                 '}';
+    }
+
+    public Integer getNo() {
+        return no;
+    }
+
+    public void setNo(Integer no) {
+        this.no = no;
     }
 
     public String getId() {

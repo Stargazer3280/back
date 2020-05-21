@@ -3,6 +3,7 @@ package com.example.demo.entity;
 import java.util.Arrays;
 
 public class CollapseRecord {
+    private Integer no;
     private String id;
     private String location;
     private String date;
@@ -24,6 +25,14 @@ public class CollapseRecord {
                 ", picture=" + Arrays.toString(picture) +
                 ", reportingUnit='" + reportingUnit + '\'' +
                 '}';
+    }
+
+    public Integer getNo() {
+        return no;
+    }
+
+    public void setNo(Integer no) {
+        this.no = no;
     }
 
     public String getId() {

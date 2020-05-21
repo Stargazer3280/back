@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 public class DeathStatistics {
+    private Integer no;
     private String id;
     private String location;
     private String date;
@@ -16,6 +17,14 @@ public class DeathStatistics {
                 ", number=" + number +
                 ", reportingUnit='" + reportingUnit + '\'' +
                 '}';
+    }
+
+    public Integer getNo() {
+        return no;
+    }
+
+    public void setNo(Integer no) {
+        this.no = no;
     }
 
     public String getId() {

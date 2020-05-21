@@ -3,6 +3,7 @@ package com.example.demo.entity;
 import java.util.Arrays;
 
 public class DisasterPrediction {
+    private Integer no;
     private String id;
     private String date;
     private String location;
@@ -32,6 +33,14 @@ public class DisasterPrediction {
                 ", note='" + note + '\'' +
                 ", reportingUnit='" + reportingUnit + '\'' +
                 '}';
+    }
+
+    public Integer getNo() {
+        return no;
+    }
+
+    public void setNo(Integer no) {
+        this.no = no;
     }
 
     public String getId() {
