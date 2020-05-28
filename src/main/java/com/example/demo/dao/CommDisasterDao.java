@@ -16,7 +16,7 @@ public interface CommDisasterDao {
     @Delete("delete from comm_disaster where no=#{no}")
     void delete(@Param("no") Integer no);
 
-    @Update("update comm_disaster set id=#{id},date=#{date},location=#{location},type=#{type},grade=#{grade},picture=#{picture},note=#{note},reporting_unit=#{reportingUnit}")
+    @Update("update comm_disaster set id=#{id},date=#{date},location=#{location},type=#{type},grade=#{grade},picture=#{picture},note=#{note},reporting_unit=#{reportingUnit} where no=#{no}")
     void update(CommDisaster commDisaster);
 
     @Select("select * from comm_disaster where no=#{no}")

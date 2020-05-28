@@ -7,6 +7,13 @@
         "reportingUnit": "123"
     },
     {
+        "id": "1234567890121136789",
+        "location": "河北省",
+        "date": "1日",
+        "number": 100,
+        "reportingUnit": "河北省xx局"
+    },
+    {
         "id": "1234567890122216789",
         "date": "1月1日",
         "location": "北京市朝阳区",
@@ -15,6 +22,28 @@
         "destroyedSquare": "30",
         "note": "破坏很严重",
         "reportingUnit": "北京市xx局"
+    },
+    {
+        "id": "1234567890122316789",
+        "date": "1月1日",
+        "location": "北京市朝阳区",
+        "basicallyIntactSquare": "10",
+        "slightDamagedSquare":"20",
+        "moderateDamagedSquare":"2",
+        "seriousDamagedSquare":"1",
+        "destroyedSquare": "30",
+        "note": "破坏很严重",
+        "reportingUnit": "北京市xx局"
+    },
+    {
+        "id": "1234567890123316789",
+        "date": "1月2日",
+        "location": "北京市海淀区",
+        "type": "2",
+        "grade": "4",
+        "picture": null,
+        "note": "灾情的描述",
+        "reportingUnit": "xx局"
     },
     {
         "id": "1234567890123366789",
@@ -37,6 +66,27 @@
         "reportingUnit": "xx局"
     },
     {
+        "id": "1234567890124426789",
+        "location": "上海",
+        "date":"1月10日",
+        "type": "2",
+        "status": "3",
+        "note": "崩塌破坏",
+        "picture": null,
+        "reportingUnit": "xx局"
+    },
+    {
+        "id": "1234567890125516789",
+        "date": "123",
+        "location": "上海",
+        "longitude": 10.36,
+        "latitude": 3.6,
+        "depth": 3.69,
+        "magnitude": 9.87,
+        "picture": null,
+        "reportingUnit": "xx局"
+    }
+    {
         "id": "1234567890125526789",
         "date": "123",
         "location": "上海",
@@ -44,7 +94,7 @@
         "latitude": 3.6,
         "depth": 3.69,
         "magnitude": 9.87,
-        "intensity": "烈度。",
+        "intensity": "烈度2",
         "type": "2",
         "picture": null,
         "note": "破坏很严重",

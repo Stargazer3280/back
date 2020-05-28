@@ -16,7 +16,7 @@ public interface CivilStructureDao {
     @Delete("delete from civil_structure where no=#{no}")
     void delete(@Param("no") Integer no);
 
-    @Update("update civil_structure set id=#{id},date=#{date},location=#{location},basically_intact_square=#{basicallyIntactSquare},damaged_square=#{damagedSquare},destroyed_square=#{destroyedSquare},note=#{note},reporting_unit=#{reportingUnit}")
+    @Update("update civil_structure set id=#{id},date=#{date},location=#{location},basically_intact_square=#{basicallyIntactSquare},damaged_square=#{damagedSquare},destroyed_square=#{destroyedSquare},note=#{note},reporting_unit=#{reportingUnit} where no=#{no}")
     void update(CivilStructure civilStructure);
 
     @Select("select * from civil_structure where no=#{no}")

@@ -16,7 +16,7 @@ public interface CollapseRecordDao {
     @Delete("delete from collapse_record where no=#{no}")
     void delete(@Param("no") Integer no);
 
-    @Update("update collapse_record set id=#{id},location=#{location},date=#{date},type=#{type},status=#{status},note=#{note},picture=#{picture},reporting_unit=#{reportingUnit}")
+    @Update("update collapse_record set id=#{id},location=#{location},date=#{date},type=#{type},status=#{status},note=#{note},picture=#{picture},reporting_unit=#{reportingUnit} where no=#{no}")
     void update(CollapseRecord collapseRecord);
 
     @Select("select * from collapse_record where no=#{no}")

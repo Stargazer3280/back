@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.alibaba.fastjson.JSON;
 import com.example.demo.dao.*;
 import com.example.demo.entity.*;
+import com.example.demo.service.ExcelReadingService;
 import com.example.demo.service.JsonReadingService;
 import com.example.demo.service.StatusService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,22 +16,37 @@ import java.util.List;
 @RestController
 public class Controller {
     @Autowired
-    private JsonReadingService jsonReadingService;
-    @Autowired
-    private DeathStatisticsDao deathStatisticsDao;
-    @Autowired
     private CivilStructureDao civilStructureDao;
-    @Autowired
-    private CommDisasterDao commDisasterDao;
     @Autowired
     private CollapseRecordDao collapseRecordDao;
     @Autowired
+    private CommDisasterDao commDisasterDao;
+    @Autowired
+    private DeathStatisticsDao deathStatisticsDao;
+    @Autowired
+    private DisasterInfoDao disasterInfoDao;
+    @Autowired
     private DisasterPredictionDao disasterPredictionDao;
+    @Autowired
+    private LandslideRecordDao landslideRecordDao;
+    @Autowired
+    private MasonryStructureDao masonryStructureDao;
+    @Autowired
+    private MissingStatisticsDao missingStatisticsDao;
+    @Autowired
+    private TrafficDisasterDao trafficDisasterDao;
+
+
+    @Autowired
+    private ExcelReadingService excelReadingService;
+    @Autowired
+    private JsonReadingService jsonReadingService;
     @Autowired
     private StatusService statusService;
 
     @GetMapping("/")
     public String a() {
+        System.out.println(excelReadingService.get("110101015005"));
         return "hello";
     }
 
@@ -54,9 +70,34 @@ public class Controller {
         return deathStatisticsDao.getAll();
     }
 
+    @GetMapping("/information/getAll/disasterInfo")
+    public List<DisasterInfo> getAllDisasterInfo() {
+        return disasterInfoDao.getAll();
+    }
+
     @GetMapping("/information/getAll/disasterPrediction")
     public List<DisasterPrediction> getAllDisasterPrediction() {
         return disasterPredictionDao.getAll();
+    }
+
+    @GetMapping("/information/getAll/landslideRecord")
+    public List<LandslideRecord> getAllLandslideRecord() {
+        return landslideRecordDao.getAll();
+    }
+
+    @GetMapping("/information/getAll/masonryStructure")
+    public List<MasonryStructure> getAllMasonryStructure() {
+        return masonryStructureDao.getAll();
+    }
+
+    @GetMapping("/information/getAll/missingStatistics")
+    public List<MissingStatistics> getAllMissingStatistics() {
+        return missingStatisticsDao.getAll();
+    }
+
+    @GetMapping("/information/getAll/trafficDisaster")
+    public List<TrafficDisaster> getAllTrafficDisaster() {
+        return trafficDisasterDao.getAll();
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -80,9 +121,34 @@ public class Controller {
         return deathStatisticsDao.getByNo(no);
     }
 
+    @GetMapping("/information/get/disasterInfo")
+    public DisasterInfo getDisasterInfo(Integer no) {
+        return disasterInfoDao.getByNo(no);
+    }
+
     @GetMapping("/information/get/disasterPrediction")
     public DisasterPrediction getDisasterPrediction(Integer no) {
         return disasterPredictionDao.getByNo(no);
+    }
+
+    @GetMapping("/information/get/landslideRecord")
+    public LandslideRecord getLandslideRecord(Integer no) {
+        return landslideRecordDao.getByNo(no);
+    }
+
+    @GetMapping("/information/get/masonryStructure")
+    public MasonryStructure getMasonryStructure(Integer no) {
+        return masonryStructureDao.getByNo(no);
+    }
+
+    @GetMapping("/information/get/missingStatistics")
+    public MissingStatistics getMissingStatistics(Integer no) {
+        return missingStatisticsDao.getByNo(no);
+    }
+
+    @GetMapping("/information/get/trafficDisaster")
+    public TrafficDisaster getTrafficDisaster(Integer no) {
+        return trafficDisasterDao.getByNo(no);
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -101,8 +167,23 @@ public class Controller {
             case "deathStatistics":
                 deathStatisticsDao.delete(no);
                 break;
+            case "disasterInfo":
+                disasterInfoDao.delete(no);
+                break;
             case "disasterPrediction":
                 disasterPredictionDao.delete(no);
+                break;
+            case "landslideRecord":
+                landslideRecordDao.delete(no);
+                break;
+            case "masonryStructure":
+                masonryStructureDao.delete(no);
+                break;
+            case "missingStatistics":
+                missingStatisticsDao.delete(no);
+                break;
+            case "trafficDisaster":
+                trafficDisasterDao.delete(no);
                 break;
         }
         return "删除成功";
@@ -133,9 +214,39 @@ public class Controller {
         return "添加成功";
     }
 
+    @PostMapping("/information/insert/disasterInfo")
+    public String insertDisasterInfo(@RequestBody(required = false) DisasterInfo disasterInfo) {
+        disasterInfoDao.insert(disasterInfo);
+        return "添加成功";
+    }
+
     @PostMapping("/information/insert/disasterPrediction")
     public String insertDisasterPrediction(@RequestBody(required = false) DisasterPrediction disasterPrediction) {
         disasterPredictionDao.insert(disasterPrediction);
+        return "添加成功";
+    }
+
+    @PostMapping("/information/insert/landslideRecord")
+    public String insertLandslideRecord(@RequestBody(required = false) LandslideRecord landslideRecord) {
+        landslideRecordDao.insert(landslideRecord);
+        return "添加成功";
+    }
+
+    @PostMapping("/information/insert/masonryStructure")
+    public String insertMasonryStructure(@RequestBody(required = false) MasonryStructure masonryStructure) {
+        masonryStructureDao.insert(masonryStructure);
+        return "添加成功";
+    }
+
+    @PostMapping("/information/insert/missingStatistics")
+    public String insertMissingStatistics(@RequestBody(required = false) MissingStatistics missingStatistics) {
+        missingStatisticsDao.insert(missingStatistics);
+        return "添加成功";
+    }
+
+    @PostMapping("/information/insert/trafficDisaster")
+    public String insertTrafficDisaster(@RequestBody(required = false) TrafficDisaster trafficDisaster) {
+        trafficDisasterDao.insert(trafficDisaster);
         return "添加成功";
     }
 
@@ -164,9 +275,39 @@ public class Controller {
         return "修改成功";
     }
 
+    @PostMapping("/information/update/disasterInfo")
+    public String updateDisasterInfo(@RequestBody(required = false) DisasterInfo disasterInfo) {
+        disasterInfoDao.update(disasterInfo);
+        return "修改成功";
+    }
+
     @PostMapping("/information/update/disasterPrediction")
     public String updateDisasterPrediction(@RequestBody(required = false) DisasterPrediction disasterPrediction) {
         disasterPredictionDao.update(disasterPrediction);
+        return "修改成功";
+    }
+
+    @PostMapping("/information/update/landslideRecord")
+    public String updateLandslideRecord(@RequestBody(required = false) LandslideRecord landslideRecord) {
+        landslideRecordDao.update(landslideRecord);
+        return "修改成功";
+    }
+
+    @PostMapping("/information/update/masonryStructure")
+    public String updateMasonryStructure(@RequestBody(required = false) MasonryStructure masonryStructure) {
+        masonryStructureDao.update(masonryStructure);
+        return "修改成功";
+    }
+
+    @PostMapping("/information/update/missingStatistics")
+    public String updateMissingStatistics(@RequestBody(required = false) MissingStatistics missingStatistics) {
+        missingStatisticsDao.update(missingStatistics);
+        return "修改成功";
+    }
+
+    @PostMapping("/information/update/trafficDisaster")
+    public String updateTrafficDisaster(@RequestBody(required = false) TrafficDisaster trafficDisaster) {
+        trafficDisasterDao.update(trafficDisaster);
         return "修改成功";
     }
 

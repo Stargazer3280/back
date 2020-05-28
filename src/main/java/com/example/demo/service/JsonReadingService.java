@@ -23,11 +23,21 @@ public class JsonReadingService {
     @Autowired
     private DeathStatisticsDao deathStatisticsDao;
     @Autowired
+    private MissingStatisticsDao missingStatisticsDao;
+    @Autowired
     private CivilStructureDao civilStructureDao;
+    @Autowired
+    private MasonryStructureDao masonryStructureDao;
+    @Autowired
+    private TrafficDisasterDao trafficDisasterDao;
     @Autowired
     private CommDisasterDao commDisasterDao;
     @Autowired
     private CollapseRecordDao collapseRecordDao;
+    @Autowired
+    private LandslideRecordDao landslideRecordDao;
+    @Autowired
+    private DisasterInfoDao disasterInfoDao;
     @Autowired
     private DisasterPredictionDao disasterPredictionDao;
     @Autowired
@@ -44,11 +54,29 @@ public class JsonReadingService {
                     deathStatisticsDao.insert(deathStatistics);
                     statusService.updateStatus("deathStatistics", 0);
                     break;
+                case "113"://失踪MissingStatistics
+                    MissingStatistics missingStatistics = JSON.parseObject(new JSONObject(json).toString(), MissingStatistics.class);
+                    missingStatistics.setReportingUnit(MSCode + missingStatistics.getReportingUnit());
+                    missingStatisticsDao.insert(missingStatistics);
+                    //statusService.updateStatus("missingStatistics", 0);
+                    break;
                 case "221"://土木CivilStructure
                     CivilStructure civilStructure = JSON.parseObject(new JSONObject(json).toString(), CivilStructure.class);
                     civilStructure.setReportingUnit(MSCode + civilStructure.getReportingUnit());
                     civilStructureDao.insert(civilStructure);
                     statusService.updateStatus("civilStructure", 0);
+                    break;
+                case "223"://砖混MasonryStructure
+                    MasonryStructure masonryStructure = JSON.parseObject(new JSONObject(json).toString(), MasonryStructure.class);
+                    masonryStructure.setReportingUnit(MSCode + masonryStructure.getReportingUnit());
+                    masonryStructureDao.insert(masonryStructure);
+                    //statusService.updateStatus("civilStructure", 0);
+                    break;
+                case "331"://交通TrafficDisaster
+                    TrafficDisaster trafficDisaster = JSON.parseObject(new JSONObject(json).toString(), TrafficDisaster.class);
+                    trafficDisaster.setReportingUnit(MSCode + trafficDisaster.getReportingUnit());
+                    trafficDisasterDao.insert(trafficDisaster);
+                    //statusService.updateStatus("civilStructure", 0);
                     break;
                 case "336"://通信CommDisaster
                     CommDisaster commDisaster = JSON.parseObject(new JSONObject(json).toString(), CommDisaster.class);
@@ -60,7 +88,19 @@ public class JsonReadingService {
                     CollapseRecord collapseRecord = JSON.parseObject(new JSONObject(json).toString(), CollapseRecord.class);
                     collapseRecord.setReportingUnit(MSCode + collapseRecord.getReportingUnit());
                     collapseRecordDao.insert(collapseRecord);
-                    statusService.updateStatus("collapseRecord", 0);
+                    //statusService.updateStatus("commDisaster", 0);
+                    break;
+                case "442"://滑坡LandslideRecord
+                    LandslideRecord landslideRecord = JSON.parseObject(new JSONObject(json).toString(), LandslideRecord.class);
+                    landslideRecord.setReportingUnit(MSCode + landslideRecord.getReportingUnit());
+                    landslideRecordDao.insert(landslideRecord);
+                    //statusService.updateStatus("collapseRecord", 0);
+                    break;
+                case "551"://基本震情DisasterInfo
+                    DisasterInfo disasterInfo = JSON.parseObject(new JSONObject(json).toString(), DisasterInfo.class);
+                    disasterInfo.setReportingUnit(MSCode + disasterInfo.getReportingUnit());
+                    disasterInfoDao.insert(disasterInfo);
+                    //statusService.updateStatus("disasterPrediction", 0);
                     break;
                 case "552"://灾情预测DisasterPrediction
                     DisasterPrediction disasterPrediction = JSON.parseObject(new JSONObject(json).toString(), DisasterPrediction.class);

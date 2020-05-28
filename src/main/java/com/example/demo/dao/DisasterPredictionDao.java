@@ -16,7 +16,7 @@ public interface DisasterPredictionDao {
     @Delete("delete from disaster_prediction where no=#{no}")
     void delete(@Param("no") Integer no);
 
-    @Update("update disaster_prediction set id=#{id},date=#{date},location=#{location},longitude=#{longitude},latitude=#{latitude},depth=#{depth},magnitude=#{magnitude},intensity=#{intensity},type=#{type},picture=#{picture},note=#{note},reporting_unit=#{reportingUnit}")
+    @Update("update disaster_prediction set id=#{id},date=#{date},location=#{location},longitude=#{longitude},latitude=#{latitude},depth=#{depth},magnitude=#{magnitude},intensity=#{intensity},type=#{type},picture=#{picture},note=#{note},reporting_unit=#{reportingUnit} where no=#{no}")
     void update(DisasterPrediction disasterPrediction);
 
     @Select("select * from disaster_prediction where no=#{no}")
