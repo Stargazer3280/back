@@ -46,7 +46,7 @@ public class Controller {
 
     @GetMapping("/")
     public String a() {
-        System.out.println(excelReadingService.get("110101015005"));
+        System.out.println(excelReadingService.getLocation("451103105000"));
         return "hello";
     }
 
@@ -314,7 +314,7 @@ public class Controller {
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     @PostMapping("/upload")//上传json文件
     public String upload(@RequestParam MultipartFile file, String MSCode) throws IOException {
-        jsonReadingService.JSONDealer(file, MSCode);
+        jsonReadingService.JSONDealer(jsonReadingService.getStreamToStr(file.getInputStream()), MSCode);
         return "上传文件成功";
     }
 
